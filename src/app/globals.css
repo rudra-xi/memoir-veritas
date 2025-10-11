@@ -1,26 +1,111 @@
 @import "tailwindcss";
 
+/**
+ * @file globals.css
+ * @description This file establishes the foundational styles for the entire
+ * application. It defines global CSS custom properties (variables) for the
+ * color palette and typography, sets base styles for the HTML and body,
+ * and includes custom Tailwind CSS `@utility` classes for reusable layout
+ * and text styling patterns, ensuring a consistent and maintainable design system.
+ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Defines global CSS variables. */
+  --background: hsl(0, 0%, 7%);
+  --text: hsl(0, 0%, 96%);
+  --accent: hsl(70, 65%, 42%);
+  --sora: "Sora", sans-serif;
+  --rosaline: "Rosaline", sans-serif;
 }
 
 @theme inline {
+  /* Extends Tailwind's default theme. */
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-text: var(--text);
+  --color-accent: var(--accent);
+  --font--sora: var(--sora);
+  --font-rosaline: var(--rosaline);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
+html body {
+  /* Sets base document styles. */
+  overflow-x: hidden;
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  font-family: var(--sora);
+  font-weight: 500;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  /* Customizes the browser scrollbar. */
+  width: 3px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+}
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+.noise {
+  /* Applies a noise overlay effect. */
+  @apply bg-[url(/noise.png)] size-full bg-contain;
+}
+
+@utility flex-center {
+  /* Creates a flex-center utility. */
+  @apply flex items-center justify-center;
+}
+@utility flex-tween {
+  /* Creates a flex-between utility. */
+  @apply flex items-center justify-between;
+}
+@utility col-center {
+  /* Creates a column-center utility. */
+  @apply flex flex-col items-center justify-center;
+}
+
+@utility page-size {
+  /* Defines full-screen page size. */
+  @apply w-full h-screen overflow-hidden;
+}
+
+@utility home-page-padding {
+  /* Sets padding for home page. */
+  @apply px-10 pt-20;
+}
+
+@utility page-padding {
+  /* Defines default page padding. */
+  @apply px-10 pt-10;
+}
+
+@utility home-text {
+  /* Styles the main hero text. */
+  @apply text-[160px] font-extrabold uppercase whitespace-nowrap;
+}
+
+@utility profile-text {
+  /* Styles the main profile text. */
+  @apply text-[185px] font-extrabold uppercase whitespace-nowrap;
+}
+
+@utility service-text {
+  /* Styles the main services text. */
+  @apply text-[185px] font-rosaline whitespace-nowrap;
+}
+
+@utility gallery-text {
+  /* Styles the main gallery text. */
+  @apply text-[120px] uppercase font-extrabold whitespace-nowrap tracking-tighter;
+}
+
+@utility contact-text {
+  @apply text-[140px] uppercase font-extrabold tracking-tighter text-center;
+}
+
+@utility shadow-custom {
+  /* Creates a custom box shadow. */
+  @apply shadow-[6px_12px_20px_5px_rgba(18,_18,_18,_0.5)];
 }
