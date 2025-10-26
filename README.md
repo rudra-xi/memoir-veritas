@@ -68,7 +68,6 @@ The page will automatically reload when you make changes to the code. You can al
 - `npm run start` - Starts the production server (after building).
 - `npm run lint` - Runs Biome to check for code issues.
 - `npm run format` - Formats code with Biome and Prettier.
-- `npm run format:check` - Checks code formatting with Biome without making changes.
 
 ---
 
